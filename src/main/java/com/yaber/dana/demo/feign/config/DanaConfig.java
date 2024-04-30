@@ -14,6 +14,10 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties("dana")
 public class DanaConfig {
 
+    private String clientId;
+
+    private String merchantId;
+
     private String privateKey;
 
     private String publicKey;

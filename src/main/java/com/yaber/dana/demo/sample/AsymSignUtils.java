@@ -14,9 +14,7 @@ import java.util.Base64;
  */
 public class AsymSignUtils {
     private static final String KEY_ALGO_NAME = "RSA";
-
     private static final char[] DIGITS_LOWER = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
-
 
 
     public static void main(String[] args) throws NoSuchAlgorithmException {

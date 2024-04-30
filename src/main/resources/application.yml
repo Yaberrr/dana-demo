@@ -4,7 +4,9 @@ spring:
     name: dana-demo
 
 dana:
-  url: www.baidu.com
+  url: https://api.sandbox.dana.id
+  merchantId:
+  clientId:
   privateKey:
   publicKey:
   danaPublicKey:
