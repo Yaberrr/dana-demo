@@ -6,6 +6,7 @@ import com.yaber.dana.demo.common.model.DanaMoney;
 import com.yaber.dana.demo.common.model.DanaOrder;
 import com.yaber.dana.demo.common.model.additionalInfo.DanaEnvInfo;
 import com.yaber.dana.demo.common.resp.DanaPaymentResp;
+import com.yaber.dana.demo.common.vo.DanaPaymentCancelVo;
 import com.yaber.dana.demo.common.vo.DanaPaymentQueryVo;
 import com.yaber.dana.demo.common.vo.DanaPaymentVo;
 import com.yaber.dana.demo.feign.api.DanaApi;
@@ -35,8 +36,8 @@ class DanaDemoApplicationTests {
         DanaPaymentVo vo = new DanaPaymentVo();
         vo.setMerchantId(danaConfig.getMerchantId());
         vo.setAmount(new DanaMoney(new BigDecimal("30.00"), "IDR"));
-        vo.setPartnerReferenceNo("8");
-        vo.setValidUpTo(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2024-05-07 10:21:00"));
+        vo.setPartnerReferenceNo("10");
+        vo.setValidUpTo(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2024-05-07 11:35:00"));
         DanaAdditionalInfo additionalInfo = new DanaAdditionalInfo();
         additionalInfo.setOrder(new DanaOrder("testOrder"));
         additionalInfo.setProductCode("51051000100000000001");
@@ -51,14 +52,20 @@ class DanaDemoApplicationTests {
     @Test
     void testQueryPayment(){
         DanaPaymentQueryVo queryVo = new DanaPaymentQueryVo();
-        queryVo.setOriginalPartnerReferenceNo("8");
-        queryVo.setOriginalReferenceNo("20240506111212800110166239001601412");
+        queryVo.setOriginalPartnerReferenceNo("10");
+//        queryVo.setOriginalReferenceNo("20240506111212800110166239001601412");
         queryVo.setMerchantId(danaConfig.getMerchantId());
         queryVo.setServiceCode(ServiceCodeEnum.PAYMENT_GATEWAY);
         System.out.println(danaApi.queryPayment(queryVo));
     }
 
-
+    @Test
+    void testCancelPayment(){
+        DanaPaymentCancelVo cancelVo = new DanaPaymentCancelVo();
+        cancelVo.setOriginalPartnerReferenceNo("10");
+        cancelVo.setMerchantId(danaConfig.getMerchantId());
+        System.out.println(danaApi.cancelPayment(cancelVo));
+    }
 
 
 }

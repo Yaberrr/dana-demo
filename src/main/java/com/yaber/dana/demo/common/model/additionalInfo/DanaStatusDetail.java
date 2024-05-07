@@ -14,8 +14,8 @@ public class DanaStatusDetail {
     //是否冻结
     private boolean frozen;
 
-    //是否取消
-    private boolean cancelled;
+    //是否取消 响应中未包含此字段
+//    private boolean cancelled;
 
     //状态
     private StatusDetailEnum acquirementStatus;

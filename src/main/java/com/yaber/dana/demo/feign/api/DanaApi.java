@@ -1,6 +1,8 @@
 package com.yaber.dana.demo.feign.api;
 
+import com.yaber.dana.demo.common.resp.DanaPaymentCancelResp;
 import com.yaber.dana.demo.common.resp.DanaPaymentQueryResp;
+import com.yaber.dana.demo.common.vo.DanaPaymentCancelVo;
 import com.yaber.dana.demo.feign.config.DanaConfiguration;
 import com.yaber.dana.demo.common.resp.DanaPaymentResp;
 import com.yaber.dana.demo.common.vo.DanaPaymentQueryVo;
@@ -29,4 +31,10 @@ public interface DanaApi {
      */
     @PostMapping(value = "/v1.0/debit/status.htm")
     DanaPaymentQueryResp queryPayment(DanaPaymentQueryVo queryVo);
+
+    /**
+     * 取消支付
+     */
+    @PostMapping(value = "/v1.0/debit/cancel.htm")
+    DanaPaymentCancelResp cancelPayment(DanaPaymentCancelVo cancelVo);
 }
