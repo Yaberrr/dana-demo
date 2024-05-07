@@ -2,6 +2,7 @@ package com.yaber.dana.demo.feign.config;
 
 import feign.Logger;
 import feign.RequestInterceptor;
+import feign.codec.ErrorDecoder;
 import feign.slf4j.Slf4jLogger;
 import org.springframework.context.annotation.Bean;
 
@@ -27,5 +28,10 @@ public class DanaConfiguration {
     @Bean
     public Slf4jLogger feignLogger() {
         return new Slf4jLogger(DanaConfiguration.class);
+    }
+
+    @Bean
+    public ErrorDecoder errorDecoder() {
+        return new DanaErrorDecoder();
     }
 }
