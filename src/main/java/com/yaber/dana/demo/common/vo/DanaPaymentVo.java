@@ -1,9 +1,13 @@
 package com.yaber.dana.demo.common.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.yaber.dana.demo.common.model.DanaAdditionalInfo;
 import com.yaber.dana.demo.common.model.DanaMoney;
+import com.yaber.dana.demo.common.serializer.DanaZoneSerializer;
 import lombok.Data;
+
+import java.util.Date;
 
 /**
  * 发起支付vo
@@ -26,10 +30,13 @@ public class DanaPaymentVo {
     //附加信息
     private DanaAdditionalInfo additionalInfo;
 
-    //------------------可选-----------------
+    /**
+     * ------------------可选-----------------
+     */
 
     //支付过期时间
-    private String validUpTo;
+    @JsonSerialize(using = DanaZoneSerializer.class)
+    private Date validUpTo;
 
     //商铺id
     private String externalStoreId;

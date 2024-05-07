@@ -15,5 +15,4 @@ public class DanaOrder {
     //订单标题
     private String orderTitle;
 
-
 }

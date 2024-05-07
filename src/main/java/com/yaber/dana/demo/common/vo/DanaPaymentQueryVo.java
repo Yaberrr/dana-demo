@@ -1,9 +1,13 @@
 package com.yaber.dana.demo.common.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.yaber.dana.demo.common.enums.ServiceCodeEnum;
 import com.yaber.dana.demo.common.model.DanaMoney;
+import com.yaber.dana.demo.common.serializer.DanaZoneSerializer;
 import lombok.Data;
+
+import java.util.Date;
 
 /**
  * 查询支付vo
@@ -23,7 +27,9 @@ public class DanaPaymentQueryVo {
     //交易类型
     private ServiceCodeEnum serviceCode;
 
-    //------------------可选-----------------
+    /**
+     * ------------------可选-----------------
+     */
 
     //dana唯一id
     private String originalReferenceNo;
@@ -35,5 +41,6 @@ public class DanaPaymentQueryVo {
     private DanaMoney amount;
 
     //交易时间
-    private String transactionDate;
+    @JsonSerialize(using = DanaZoneSerializer.class)
+    private Date transactionDate;
 }

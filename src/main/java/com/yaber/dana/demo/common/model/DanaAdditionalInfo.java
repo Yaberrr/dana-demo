@@ -14,20 +14,28 @@ import lombok.Data;
 @Data
 public class DanaAdditionalInfo {
 
+    /**
+     * ------------支付必填--------------
+     */
+
     //产品代码
     private String productCode;
-
-    //需填写订单标题
-    private DanaOrder order;
 
     //商户所从事的产业代码
     private String mcc;
 
-    //关闭原因
-    private String closeReason;
+    //订单信息
+    private DanaOrder order;
 
     //环境信息
     private DanaEnvInfo envInfo;
+
+    /**
+     * ------------查询返回-------------
+     */
+
+    //关闭原因
+    private String closeReason;
 
     //时间详情
     private DanaTimeDetail timeDetail;

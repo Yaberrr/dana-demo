@@ -1,10 +1,12 @@
 package com.yaber.dana.demo.common.resp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.yaber.dana.demo.common.enums.ServiceCodeEnum;
 import com.yaber.dana.demo.common.enums.TransactionStatusEnum;
 import com.yaber.dana.demo.common.model.DanaAdditionalInfo;
 import com.yaber.dana.demo.common.model.DanaMoney;
+import com.yaber.dana.demo.common.serializer.DanaZoneDeserializer;
 import com.yaber.dana.demo.feign.config.DanaConfig;
 import lombok.Data;
 
@@ -16,7 +18,7 @@ import java.util.Date;
  * @date 2024/5/6
  */
 @Data
-public class DanaPaymentQueryResp {
+public class DanaPaymentQueryResp extends DanaResp {
 
     //交易唯一id
     private String originalPartnerReferenceNo;
@@ -40,7 +42,7 @@ public class DanaPaymentQueryResp {
     private String title;
 
     //支付时间
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DanaConfig.RECEIVE_PATTERN, timezone = "GMT+7")
+    @JsonDeserialize(using = DanaZoneDeserializer.class)
     private Date paidTime;
 
 

@@ -2,7 +2,7 @@ package com.yaber.dana.demo.feign.config;
 
 import com.yaber.dana.demo.utils.AsymSignUtils;
 import com.yaber.dana.demo.utils.DanaExternalIdGenerator;
-import com.yaber.dana.demo.utils.IndonesiaTimeConvertor;
+import com.yaber.dana.demo.utils.DanaZoneConvertor;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class DanaAsymSignInterceptor implements RequestInterceptor {
         if(Objects.nonNull(requestTemplate.body())) {
             payload = new String(requestTemplate.body());
         }
-        String timestamp = IndonesiaTimeConvertor.convertZone(new Date());
+        String timestamp = DanaZoneConvertor.formatWithZone(new Date());
         String xSignature = AsymSignUtils.generateAsymmetricSignature(payload,httpMethod,url,timestamp,danaConfig.getPrivateKey());
         requestTemplate.header("X-SIGNATURE", xSignature);
         requestTemplate.header("X-TIMESTAMP", timestamp);

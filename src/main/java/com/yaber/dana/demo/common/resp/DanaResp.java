@@ -15,5 +15,4 @@ public abstract class DanaResp {
 
     private String responseMessage;
 
-
 }

@@ -1,6 +1,8 @@
 package com.yaber.dana.demo.common.model.additionalInfo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.yaber.dana.demo.common.serializer.DanaZoneDeserializer;
 import com.yaber.dana.demo.feign.config.DanaConfig;
 import lombok.Data;
 
@@ -15,11 +17,11 @@ import java.util.Date;
 public class DanaTimeDetail {
 
     //过期时间
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DanaConfig.RECEIVE_PATTERN, timezone = "GMT+7")
+    @JsonDeserialize(using = DanaZoneDeserializer.class)
     private Date expiryTime;
 
     //创建时间
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DanaConfig.RECEIVE_PATTERN, timezone = "GMT+7")
+    @JsonDeserialize(using = DanaZoneDeserializer.class)
     private Date createdTime;
 
 }
