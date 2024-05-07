@@ -1,8 +1,11 @@
-package com.yaber.dana.demo.sample;
+package com.yaber.dana.demo.utils;
+
+import com.yaber.dana.demo.feign.config.DanaConfig;
 
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * 转换成印度尼西亚(雅加达)时区
@@ -11,7 +14,7 @@ import java.util.Date;
  */
 public class IndonesiaTimeConvertor {
 
-    private static final DateTimeFormatter DATE_TIME_FORMATTER =  DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssxxx");
+    private static final DateTimeFormatter DATE_TIME_FORMATTER =  DateTimeFormatter.ofPattern(DanaConfig.DATE_PATTERN);
 
     private static final ZoneId indonesiaZone = ZoneId.of("Asia/Jakarta");
 

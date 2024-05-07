@@ -1,8 +1,8 @@
 package com.yaber.dana.demo.feign.config;
 
-import com.yaber.dana.demo.sample.AsymSignUtils;
-import com.yaber.dana.demo.sample.DanaExternalIdGenerator;
-import com.yaber.dana.demo.sample.IndonesiaTimeConvertor;
+import com.yaber.dana.demo.utils.AsymSignUtils;
+import com.yaber.dana.demo.utils.DanaExternalIdGenerator;
+import com.yaber.dana.demo.utils.IndonesiaTimeConvertor;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

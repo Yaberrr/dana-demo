@@ -1,8 +1,8 @@
-package com.yaber.dana.demo.feign.vo;
+package com.yaber.dana.demo.common.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.yaber.dana.demo.feign.model.DanaAdditionalInfo;
-import com.yaber.dana.demo.feign.model.DanaMoney;
+import com.yaber.dana.demo.common.model.DanaAdditionalInfo;
+import com.yaber.dana.demo.common.model.DanaMoney;
 import lombok.Data;
 
 /**
@@ -25,7 +25,6 @@ public class DanaPaymentVo {
 
     //附加信息
     private DanaAdditionalInfo additionalInfo;
-
 
     //------------------可选-----------------
 

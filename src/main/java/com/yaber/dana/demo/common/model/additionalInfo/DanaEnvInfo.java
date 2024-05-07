@@ -1,4 +1,4 @@
-package com.yaber.dana.demo.feign.model;
+package com.yaber.dana.demo.common.model.additionalInfo;
 
 import lombok.Data;
 

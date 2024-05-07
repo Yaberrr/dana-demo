@@ -13,6 +13,10 @@ import org.springframework.stereotype.Component;
 @Data
 @ConfigurationProperties("dana")
 public class DanaConfig {
+    //全局日期格式
+    public static final String DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ssxxx";
+
+    public static final String RECEIVE_PATTERN = "yyyy-MM-dd'T'HH:mm:ss";
 
     private String clientId;
 

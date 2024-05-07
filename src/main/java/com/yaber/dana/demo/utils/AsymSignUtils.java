@@ -1,4 +1,4 @@
-package com.yaber.dana.demo.sample;
+package com.yaber.dana.demo.utils;
 
 import java.nio.charset.StandardCharsets;
 import java.security.*;

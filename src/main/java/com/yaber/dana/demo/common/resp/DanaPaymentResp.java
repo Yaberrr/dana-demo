@@ -1,19 +1,14 @@
-package com.yaber.dana.demo.feign.resp;
+package com.yaber.dana.demo.common.resp;
 
 import lombok.Data;
 
 /**
- * dana响应通用类
+ * 发起支付
  * @author tangyabo
- * @date 2024/4/29
+ * @date 2024/5/6
  */
 @Data
-public class DanaResp {
-
-    //响应码 2005400为成功
-    private String responseCode;
-
-    private String responseMessage;
+public class DanaPaymentResp extends DanaResp{
 
     //dana系统中的唯一id
     private String referenceNo;
