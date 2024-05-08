@@ -1,7 +1,23 @@
+server:
+  port: 8009
+  #  port: 18002
+  ssl:
+    enabled: false
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    context-path: /payment
 
 spring:
   application:
     name: dana-demo
+  cloud:
+    openfeign:
+      client:
+        config:
+          danaApi:
+            connect-timeout: 30000
+            read-timeout: 30000
 
 dana:
   url: https://api.sandbox.dana.id
@@ -10,3 +26,7 @@ dana:
   privateKey:
   publicKey:
   danaPublicKey:
+  #支付后跳转
+  payReturn:
+  #回调通知
+  notification:
