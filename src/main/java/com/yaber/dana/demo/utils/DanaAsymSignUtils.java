@@ -1,5 +1,7 @@
 package com.yaber.dana.demo.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.security.spec.InvalidKeySpecException;
@@ -8,11 +10,12 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
 /**
- * 非对称加密
+ * 非对称加密工具类
  * @author tangyabo
  * @date 2024/4/23
  */
-public class AsymSignUtils {
+@Slf4j
+public class DanaAsymSignUtils {
     private static final String KEY_ALGO_NAME = "RSA";
     private static final char[] DIGITS_LOWER = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
@@ -81,23 +84,15 @@ public class AsymSignUtils {
      * @param timestamp
      * @param publicKey
      */
-    public static void verifyAsymmetricSignature(String signature, String payload, String httpMethod,
-                                                 String url, String timestamp, String publicKey) {
+    public static boolean verifyAsymmetricSignature(String signature, String payload, String httpMethod,
+                                                    String url, String timestamp, String publicKey) {
         try {
             String stringToSign = composeAsymStringtoSign(payload, url, httpMethod, timestamp);
-            System.out.println("String to sign = " + stringToSign);
-
             //verify signature
-            boolean isVerified = verify(signature, publicKey, stringToSign);
-            if (!isVerified) {
-                throw new RuntimeException("Failed to verify signature: " + signature);
-            }
-
-            System.out.println("Successfully verify signature: " + signature);
+            return verify(signature, publicKey, stringToSign);
         } catch (NoSuchAlgorithmException | SignatureException | InvalidKeyException
                  | InvalidKeySpecException e) {
-
-            throw new RuntimeException("Failed to generate asymmetric signature signature: " + payload, e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -162,7 +157,7 @@ public class AsymSignUtils {
      * @param json
      * @return
      */
-    private static String minifyJsonString(String json) {
+    public static String minifyJsonString(String json) {
         try {
             // Remove whitespaces and newlines
             StringBuilder result = new StringBuilder();
@@ -195,7 +190,7 @@ public class AsymSignUtils {
      * @throws InvalidKeySpecException  InvalidKeySpecException
      */
     private static String signByPrivateKey(String signContent, String privateKey,
-                                          String algorithm) throws InvalidKeyException,
+                                           String algorithm) throws InvalidKeyException,
             NoSuchAlgorithmException, SignatureException,
             InvalidKeySpecException {
         if (signContent == null) {
@@ -280,7 +275,7 @@ public class AsymSignUtils {
      * @throws SignatureException       SignatureException
      */
     private static boolean verify(byte[] unSignedData, byte[] signedData, byte[] key,
-                                 String algorithm) throws NoSuchAlgorithmException,
+                                  String algorithm) throws NoSuchAlgorithmException,
             InvalidKeySpecException, InvalidKeyException,
             SignatureException {
         PublicKey publicKey = transformPublicKey(key);
@@ -304,6 +299,5 @@ public class AsymSignUtils {
         KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGO_NAME);
         return keyFactory.generatePublic(keySpec);
     }
-
 
 }

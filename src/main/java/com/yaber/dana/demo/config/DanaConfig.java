@@ -1,4 +1,4 @@
-package com.yaber.dana.demo.feign.config;
+package com.yaber.dana.demo.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -25,10 +25,15 @@ public class DanaConfig {
 
     private String merchantId;
 
-
     private String privateKey;
 
     private String publicKey;
 
     private String danaPublicKey;
+
+    //支付后跳转
+    private String payReturn;
+
+    //回调通知
+    private String notification;
 }
