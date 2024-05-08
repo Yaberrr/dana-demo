@@ -1,10 +1,10 @@
 package com.yaber.dana.demo.common.model;
 
-import com.yaber.dana.demo.common.model.additionalInfo.DanaBuyer;
-import com.yaber.dana.demo.common.model.additionalInfo.DanaEnvInfo;
-import com.yaber.dana.demo.common.model.additionalInfo.DanaStatusDetail;
-import com.yaber.dana.demo.common.model.additionalInfo.DanaTimeDetail;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.yaber.dana.demo.common.model.additionalInfo.*;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * Dana支付附加信息
@@ -12,10 +12,11 @@ import lombok.Data;
  * @date 2024/4/30
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class DanaAdditionalInfo {
 
     /**
-     * ------------支付必填--------------
+     * ------------发起支付必填--------------
      */
 
     //产品代码
@@ -45,4 +46,19 @@ public class DanaAdditionalInfo {
 
     //用户信息
     private DanaBuyer buyer;
+
+    //支付详情
+    private List<DanaPaymentInfo> paymentViews;
+
+    /**
+     * -----------支付回调通知-----------
+     */
+
+    //支付详情
+    private DanaPaymentInfo paymentInfo;
+
+    //商铺信息
+    private DanaShopInfo shopInfo;
+
+    private String extendInfo;
 }

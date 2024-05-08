@@ -1,6 +1,6 @@
 package com.yaber.dana.demo.utils;
 
-import com.yaber.dana.demo.feign.config.DanaConfig;
+import com.yaber.dana.demo.config.DanaConfig;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;

@@ -1,9 +1,7 @@
 package com.yaber.dana.demo.common.resp;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.yaber.dana.demo.common.serializer.DanaZoneDeserializer;
-import com.yaber.dana.demo.feign.config.DanaConfig;
 import lombok.Data;
 
 import java.util.Date;

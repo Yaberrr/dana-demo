@@ -4,10 +4,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.yaber.dana.demo.common.model.DanaAdditionalInfo;
 import com.yaber.dana.demo.common.model.DanaMoney;
+import com.yaber.dana.demo.common.model.additionalInfo.DanaUrlParam;
 import com.yaber.dana.demo.common.serializer.DanaZoneSerializer;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 发起支付vo
@@ -29,6 +31,9 @@ public class DanaPaymentVo {
 
     //附加信息
     private DanaAdditionalInfo additionalInfo;
+
+    //回调url
+    private List<DanaUrlParam> urlParams;
 
     /**
      * ------------------可选-----------------
