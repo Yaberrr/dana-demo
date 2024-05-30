@@ -16,6 +16,6 @@ import java.math.RoundingMode;
 public class DanaDecimalSerializer extends JsonSerializer<BigDecimal> {
     @Override
     public void serialize(BigDecimal bigDecimal, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
-        jsonGenerator.writeString(bigDecimal.setScale(2, RoundingMode.HALF_UP).toString());
+        jsonGenerator.writeString(bigDecimal.setScale(2, RoundingMode.DOWN).toString());
     }
 }

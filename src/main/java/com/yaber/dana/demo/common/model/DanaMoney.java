@@ -24,4 +24,5 @@ public class DanaMoney {
 
     //货币
     private String currency;
+
 }

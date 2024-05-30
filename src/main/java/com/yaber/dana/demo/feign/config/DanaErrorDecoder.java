@@ -1,13 +1,13 @@
 package com.yaber.dana.demo.feign.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yaber.dana.demo.common.exception.DanaException;
-import feign.FeignException;
+import com.yaber.dana.demo.common.resp.DanaResp;
 import feign.Response;
 import feign.Util;
 import feign.codec.ErrorDecoder;
 import io.micrometer.common.util.StringUtils;
 
-import java.io.IOException;
 import java.util.Objects;
 
 /**
@@ -16,6 +16,8 @@ import java.util.Objects;
  * @date 2024/5/7
  */
 public class DanaErrorDecoder implements ErrorDecoder {
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+
     @Override
     public Exception decode(String methodKey, Response response) {
         try {
@@ -23,10 +25,10 @@ public class DanaErrorDecoder implements ErrorDecoder {
                 //dana api异常则只打印dana返回的异常信息
                 String responseBody = new String(Util.toByteArray(response.body().asInputStream()));
                 if(StringUtils.isNotBlank(responseBody)) {
-                    return new DanaException(responseBody);
+                    return new DanaException(objectMapper.readValue(responseBody, DanaResp.class));
                 }
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             return new Exception("Error reading response body", e);
         }
 

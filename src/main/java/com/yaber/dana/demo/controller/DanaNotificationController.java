@@ -1,6 +1,7 @@
 package com.yaber.dana.demo.controller;
 
 
+import com.yaber.dana.demo.common.resp.DanaNotifyResp;
 import com.yaber.dana.demo.common.resp.DanaResp;
 import com.yaber.dana.demo.common.vo.DanaPaymentNotifyVo;
 import com.yaber.dana.demo.feign.config.DanaConfiguration;
@@ -25,15 +26,14 @@ public class DanaNotificationController {
     @ResponseBody
     public DanaResp finishPayment(@RequestBody DanaPaymentNotifyVo notifyVo){
         log.info("receive finishPayment notification:{}", notifyVo);
-
-        return new DanaResp("2005600","receive finishPayment notification");
+        return DanaNotifyResp.SUCCESS;
     }
 
     @PostMapping("/finishRefund")
     @ResponseBody
     public DanaResp finishRefund(@RequestBody Map<String,Object> map){
         log.info("receive finishRefund notification:{}", map);
-        return new DanaResp("2005600","receive finishRefund notification");
+        return DanaNotifyResp.FAIL;
     }
 
     @RequestMapping("/redirect/{orderId}")
